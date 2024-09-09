@@ -1,0 +1,63 @@
+.container-1-2-0 {
+  position: absolute;
+  left: 160px;
+  top: 172px;
+  width: 25px;
+  height: 25px;
+  background-color: #000000;
+  justify-content: start;
+  align-items: start;
+}
+.container-1-2-1 {
+  position: absolute;
+  left: 160px;
+  top: 121px;
+  width: 25px;
+  height: 25px;
+  background-color: #000000;
+  justify-content: start;
+  align-items: start;
+}
+.container-1-2-2 {
+  position: absolute;
+  left: 160px;
+  top: 302px;
+  width: 25px;
+  height: 25px;
+  background-color: #000000;
+  justify-content: start;
+  align-items: start;
+}
+.container-1-2-3 {
+  position: absolute;
+  left: 160px;
+  top: 530px;
+  width: 25px;
+  height: 25px;
+  background-color: #000000;
+  justify-content: start;
+  align-items: start;
+}
+.text-0-1-13 {
+  position: absolute;
+  left: 680px;
+  top: 134px;
+  width: 70px;
+  height: 18px;
+  color: #ffffff;
+  font-size: 12px;
+  font-family: Inter, "Regular";
+  font-weight: 400;
+  text-align: left;
+  vertical-align: top;
+}
+.container-0-1-14 {
+  position: absolute;
+  left: 652px;
+  top: 127px;
+  width: 25px;
+  height: 25px;
+  background-color: #000000;
+  justify-content: start;
+  align-items: start;
+}

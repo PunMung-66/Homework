@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <!-- This for set the full screen -->
+        <link rel="stylesheet" href="./index.css" />
+        <!-- CND Tailwind is a utility-first CSS framework no need to install just add the link in the head tag -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <!-- link for google font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Anuphan:wght@100..700&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- Config tailwind.config.js in script -->
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        colors: {
+                            clifford: '#da373d',
+                        },
+                        fontFamily: {
+                            sans: ['Helvetica', 'Arial', 'sans-serif'],
+                            rubik: ['Rubik', 'Anuphan', 'sans-serif'],
+                            anuphan: [ 'Anuphan', 'sans-serif'],
+                        },
+                    },
+                },
+            }
+        </script>
+
+        <!-- My Custom CSS -->
+        <style type="text/tailwindcss">
+            @layer utilities {
+                .star-yellow {
+                    @apply text-[#f59e05] text-[13px] px-[0.5px] self-center
+                }
+                .star-blank{
+                    @apply text-[#D9D9D9] text-[13px] px-[0.5px] self-center
+                }
+            }
+        </style>
+        <!-- Font Awsome -->
+        <script
+            src="https://kit.fontawesome.com/0a5d6f54a2.js"
+            crossorigin="anonymous"
+        ></script>
+    </head>
+    <body>
+        <main class="flex justify-center items-center font-rubik">
+            <div
+                class="w-[278px] h-[447px] flex flex-col justify-between border-solid border-0 rounded-[8px] overflow-hidden shadow-[rgba(17,17,26,0.05)_0px_4px_8px,rgba(17,17,26,0.024)_0px_4px_16px]"
+            >
+                <img
+                    src="https://public-assets.skooldio.com/storefront-sku%2F4a711ed0-43d5-46ea-b974-e3788a62c9ac%2FAlgo-regular.png"
+                    alt="image-course"
+                    class="w-[100%] h-[135px]"
+                />
+                <div
+                    class="pl-[16px] pr-[12px] pt-[12px] pb-[20px] flex flex-col "
+                >
+                    <div class="flex flex-col gap-[4px] mb-[12px]">
+                        <span class="font-[450] text-[#faa91a] text-[12px]">
+                            ONLINE COURSE</span
+                        >
+                        <h3 class="font-[700] text-[#231f20]">
+                            Algorithm Essentials: Bridging Theory and Real-World Practice
+                        </h3>
+                        <div
+                            class="text-[#707070] font-[500] text-[14px] leading-[20.2px] tracking-[0.5px]"
+                        >
+                            เรียนรู้กระบวนการคิดในการเขียนโปรแกรมด้วย Algorithm
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-[8px] h-[95px]">
+                        <div class="flex flex-row gap-[8px]">
+                            <div
+                                class="bg-[#fbbe4b] font-[500] text-[12px] leading-[22.72px] rounded-[4px] h-[22px] w-[43px] text-center"
+                            >
+                                NEW
+                            </div>
+                            <div
+                                class="bg-[#eb5656] font-[400] text-[12px] text-[#fff] leading-[22.72px] rounded-[4px] h-[22px] w-[88px] text-center"
+                            >
+                                PROMOTION
+                            </div>
+                        </div>
+                        <div class="flex flex-row mb-2">
+                            <i class="fa-solid fa-star star-yellow"></i>
+                            <i class="fa-solid fa-star star-yellow"></i>
+                            <i class="fa-solid fa-star star-yellow"></i>
+                            <i class="fa-solid fa-star star-yellow"></i>
+                            <i class="fa-solid fa-star-half-stroke star-yellow"></i>
+                            <span class="font-[12px] ml-[4px] text-[#faa91a] tracking-[0.2px] text-left "> 4.5 </span>
+                        </div>
+                        <div class="flex h-[32px] items-center">
+                            <img src="https://public-assets.skooldio.com/storefront-category%2F6bae3f47-a202-42ec-883f-1b5c459d401a%2FSkooldio_logo_crop.jpeg" alt="skooldio-team" class="w-[32px] h-[32px] rounded-[50%]"/>
+                            <span class="text-[12px] tracking-[0.5px] ml-[8px] mx-[7px]">Skooldio Team</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-[100%] h-[38px] flex flex-row justify-end items-center pl-[16px] pr-[12px] border-t-[0.5px]">
+                   
+                    <span class="font-[700]">1,990.-</span>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>

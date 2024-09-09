@@ -1,0 +1,356 @@
+@font-face {
+    src: url('../../assets/assets/fonts/Poppins-Regular.ttf');
+    font-family: Poppins;
+    font-weight: 400;
+}
+@font-face {
+    src: url('../../assets/assets/fonts/Poppins-Light.ttf');
+    font-family: Poppins;
+    font-weight: 300;
+}
+@font-face {
+    src: url('../../assets/assets/fonts/Poppins-SemiBold.ttf');
+    font-family: Poppins;
+    font-weight: 600;
+}
+@font-face {
+    src: url('../../assets/assets/fonts/Poppins-Bold.ttf');
+    font-family: Poppins;
+    font-weight: 700;
+}
+
+* {
+    font-family: Poppins, Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    background-color: #080808;
+    color: #ffffff;
+}
+
+/* Hero-Section */
+
+html,
+body {
+    margin: 0px;
+}
+
+.hero-section {
+    --color-wd-greensolid: #def81d;
+    background: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)),
+        url('../../assets/assets/hero/hero.jpg');
+    background-position: center;
+    background-size: cover;
+
+    width: 100%;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+
+.hero-section h1 {
+    color: var(--color-wd-greensolid);
+    background-color: transparent;
+
+    width: 466px;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 72px;
+    text-align: center;
+    margin: 0px;
+}
+
+.hero-section p {
+    color: var(--color-wd-greensolid);
+    background-color: transparent;
+    text-transform: uppercase;
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 48px;
+    text-align: center;
+    margin: 0px;
+}
+
+/* Text Devider */
+
+.text-dev-in {
+    color: #def81d;
+    margin: 48px 0px;
+    font-size: 36px;
+    font-weight: 600;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    height: 22px;
+}
+
+.text-dev-in::before,
+.text-dev-in::after {
+    content: '';
+    border: solid 1px #def81d;
+    margin: 0px 32px;
+    flex-grow: 1;
+}
+
+/* Feature Card */
+
+.feature-card {
+    display: flex;
+    margin: 0px 32px;
+    gap: 24px;
+}
+
+.feature-card > div {
+    background-color: #2d2d2d;
+    padding: 24px;
+    gap: 16px;
+}
+
+.feature-card p {
+    background-color: transparent;
+}
+
+.feature-card img {
+    object-fit: cover;
+}
+
+.feature-card .title-card {
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 48px;
+    text-align: left;
+}
+
+.feature-card .content-card {
+    font-size: 24px;
+    font-weight: 300;
+    line-height: 36px;
+    text-align: left;
+}
+
+.card2 {
+    margin-top: 24px;
+    flex-direction: row-reverse;
+}
+
+@media only screen and (max-width: 600px) {
+    .feature-card {
+        flex-direction: column;
+    }
+}
+
+/* Grid gallery */
+
+/* MAX */
+/* .grid-gallery{
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.grid-gallery > img{
+    width: 100%;
+    object-fit: cover;
+}
+
+@media only screen and (max-width:1024px) {
+    .grid-gallery{
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    }
+}
+
+@media only screen and (max-width:768px) {
+    .grid-gallery{
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+
+    }
+} */
+
+.grid-gallery {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 24px;
+    margin: 0px 32px;
+}
+
+.grid-gallery > img {
+    width: 100%;
+    object-fit: cover;
+}
+
+@media only screen and (min-width: 1024px) {
+    .grid-gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media only screen and (min-width: 1280px) {
+    .grid-gallery {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+/* Slide Section */
+
+.slideshow-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    /* Do not foeget that if u want to use absolute the parent Dom must not be static */
+}
+
+.slideshow {
+    margin: 0px 32px 0px 32px;
+}
+
+.slideshow img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+
+.slide-controller {
+    position: absolute;
+    top: 45%;
+    left: 0px;
+    right: 0px;
+    background-color: transparent;
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 32px 0px 32px;
+}
+
+.control {
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    align-content: center;
+    background-color: #d2ee00;
+    border-radius: 20px;
+    margin: 10px;
+    color: #010101;
+    font-weight: 700;
+}
+
+.fade {
+    display: none;
+}
+
+.unfade {
+    display: flex;
+}
+
+/* status */
+.status-bar {
+    margin-top: 24px;
+    width: 84px;
+    display: flex;
+    justify-content: space-between;
+    align-self: center;
+}
+.dot {
+    display: block;
+    background-color: #999999;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+/* Footer */
+
+footer {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    padding: 120px 32px 48px 32px;
+}
+
+.footer-driver {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 332px;
+}
+
+.about-us,
+.contact {
+    width: 369px;
+}
+
+.footer-tittle {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 48px;
+    text-align: left;
+    margin: 0;
+}
+
+.footer-detail {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+.about-us form {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-aboutus {
+    color: #999999;
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+
+    background: #ffffff;
+    border: 0;
+
+    height: Hug (52px) px;
+    padding: 14px 16px 14px 16px;
+    gap: 10px;
+    opacity: 0px;
+}
+
+.subscribe-aboutus {
+    width: 180px;
+    height: 48px;
+    padding: 12px 33px 12px 33px;
+    gap: 8px;
+    opacity: 0px;
+    margin-top: 16px;
+    margin-bottom: 0px;
+
+    color: #010101;
+    background: #d2ee00;
+    border: 0;
+
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    text-align: left;
+}
+
+footer hr {
+    border-color: #def81d;
+    width: 100%;
+}
+
+.icon-list {
+    width: 152px;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.copyright {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    text-align: center;
+}

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="css/styles.css" />
+        <script
+            src="https://kit.fontawesome.com/0a5d6f54a2.js"
+            crossorigin="anonymous"
+        ></script>
+        <title>My Web</title>
+    </head>
+    <body>
+        <header class="hero-section">
+            <h1 class="hero-header">WEB DEVELOPMENT BOOTCAMP</h1>
+            <p class="hero-subheader">My Photo Gallery</p>
+        </header>
+        <p class="text-dev-in">Features</p>
+        <section>
+            <div class="feature-card">
+                <img
+                    src="../assets/assets/features/image-bootcamp-feature-1.png"
+                />
+                <div>
+                    <p class="title-card">City Skyline</p>
+                    <p class="content-card">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Nulla sed euismod diam. In pretium in odio at pretium.
+                        Aenean in suscipit enim. Aliquam lacus nulla, dapibus a
+                        eleifend sed, gravida sit amet justo. Nulla vel diam at
+                        orci semper mattis.
+                    </p>
+                </div>
+            </div>
+            <div class="feature-card card2">
+                <img
+                    src="../assets/assets/features/image-bootcamp-feature-2.png"
+                />
+                <div>
+                    <p class="title-card">Corporate Stockphoto</p>
+                    <p class="content-card">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Nulla sed euismod diam. In pretium in odio at pretium.
+                        Aenean in suscipit enim. Aliquam lacus nulla, dapibus a
+                        eleifend sed, gravida sit amet justo. Nulla vel diam at
+                        orci semper mattis.
+                    </p>
+                </div>
+            </div>
+        </section>
+        <p class="text-dev-in">My Work</p>
+        <section>
+            <div class="grid-gallery">
+                <img
+                    src="../assets/assets/grid/image-bootcamp-1.png"
+                    alt="image-1"
+                />
+                <img
+                    src="../assets/assets/grid/image-bootcamp-2.png"
+                    alt="image-2"
+                />
+                <img
+                    src="../assets/assets/grid/image-bootcamp-3.png"
+                    alt="image-3"
+                />
+                <img
+                    src="../assets/assets/grid/image-bootcamp-4.png"
+                    alt="image-4"
+                />
+                <img
+                    src="../assets/assets/grid/image-bootcamp-5.png"
+                    alt="image-5"
+                />
+                <img
+                    src="../assets/assets/grid/image-bootcamp-6.png"
+                    alt="image-6"
+                />
+            </div>
+        </section>
+        <p class="text-dev-in">More Photos</p>
+        <section>
+            <div class="slideshow-container">
+                <div class="slideshow unfade">
+                    <img
+                        src="../assets/assets/slider/slide1.jpg"
+                        alt="slide1"
+                    />
+                </div>
+                <div class="slideshow">
+                    <img
+                        src="../assets/assets/slider/slide2.jpg"
+                        alt="slide2"
+                    />
+                </div>
+                <div class="slideshow">
+                    <img
+                        src="../assets/assets/slider/slide3.jpg"
+                        alt="slide3"
+                    />
+                </div>
+                <div class="slideshow">
+                    <img
+                        src="../assets/assets/slider/slide4.jpg"
+                        alt="slide4"
+                    />
+                </div>
+                <div class="slide-controller">
+                    <div class="control L" onclick="{slide_backward()}">L</div>
+                    <div class="control R" onclick="{slide_forward()}">R</div>
+                </div>
+                <div class="status-bar">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <div class="footer-driver">
+                <div class="about-us">
+                    <h3 class="footer-tittle">Jane Doe</h3>
+                    <p class="footer-detail">
+                        Hello, beautiful passerby. I’m Jane Doe. A passionate
+                        photographer. I love to bla bla bla.... bla bla bla....
+                        bla bla bla.... bla bla bla.... bla bla bla.... bla bla
+                        bla.... bla bla bla.... I’m available for hiring.
+                    </p>
+                    <form id="form-aboutus">
+                        <input
+                            class="input-aboutus"
+                            type="email"
+                            value="Enter your email"
+                        />
+                        <button class="subscribe-aboutus">
+                            Subscribe
+                            <i
+                                class="fa-solid fa-arrow-right"
+                                style="
+                                    background-color: transparent;
+                                    color: #010101;
+                                    font-size: 16px;
+                                    margin-left: 8px;
+                                "
+                            ></i>
+                        </button>
+                    </form>
+                </div>
+                <div class="contact">
+                    <h3 class="footer-tittle">Get In Touch!</h3>
+                    <p class="footer-detail">
+                        MBK Tower 20th Floor, 444, Phaya Thai Rd, Wang Mai,
+                        Pathum Wan, Bangkok 10330
+                    </p>
+                    <p class="footer-detail">Email: jane.doe@realmail.com</p>
+                    <div class="icon-list">
+                        <i
+                            class="fa-brands fa-facebook"
+                            style="font-size: 2.5em; color: #898989"
+                        ></i>
+                        <i
+                            class="fa-brands fa-instagram"
+                            style="font-size: 2.5em; color: #898989"
+                        ></i>
+                        <i
+                            class="fa-brands fa-x-twitter"
+                            style="font-size: 2.5em; color: #898989"
+                        ></i>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <div class="copyright">© 2023, Jane Doe. All Rights Reserved.</div>
+        </footer>
+        <script>
+            // Declare variable
+            let form_aboutus = document.querySelector('#form-aboutus')
+            let input_aboutus = document.querySelector('.input-aboutus')
+
+            // Arrow function
+            form_aboutus.onsubmit = () => {
+                alert('Hello, ' + input_aboutus.value + '! Finally Subscribe!')
+            }
+
+            //slide
+
+            let my_slide = document.querySelectorAll('.slideshow > img')
+            let my_dot = document.querySelectorAll('.dot')
+
+            let l_control = document.querySelector('L')
+            let r_control = document.querySelector('R')
+            let index_image = 0
+
+            const update_image = (index) => {
+                for (let i = 0; i < my_slide.length; i++) {
+                    my_slide[i].style.display = 'none'
+                    my_dot[i].style.backgroundColor = '#999999'
+                    if (index === i) {
+                        my_slide[i].style.display = 'block'
+                        my_dot[i].style.backgroundColor = '#D2EE00'
+                    }
+                }
+            }
+
+            update_image(0)
+
+            const slide_forward = () => {
+                index_image++
+                if (index_image > my_slide.length - 1) {
+                    index_image = 0
+                }
+                update_image(index_image)
+            }
+            const slide_backward = () => {
+                index_image--
+                if (index_image < 0) {
+                    index_image = my_slide.length - 1
+                }
+                update_image(index_image)
+            }
+        </script>
+    </body>
+</html>
