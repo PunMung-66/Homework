@@ -1,0 +1,8 @@
+Model Information:
+* title:	Retro Computer
+* source:	https://sketchfab.com/3d-models/retro-computer-9855a5c422284e9299e90813f6e74424
+* author:	Route_Kanal (https://sketchfab.com/routekahal)
+
+Model License:
+* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
+* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works

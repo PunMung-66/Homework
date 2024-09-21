@@ -4,30 +4,33 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Punnawat Resume</title>
-        <link rel="stylesheet" href="./index.css" />
         <script
             src="https://kit.fontawesome.com/0a5d6f54a2.js"
             crossorigin="anonymous"
         ></script>
-        <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,300,0,-25"
-        />
-        <link rel="stylesheet" href="../src/output.css"/>
-        <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+        <!-- link Tailwind CSS sheet -->
+        <link rel="stylesheet" href="../src/output.css" />
     </head>
+
     <body>
-        <main class="flex justify-center items-center">
-            <section class="flex justify-center relative md:w-full px-[10px] ">
+        <!-- loader -->
+         <div class="preloader-canvas fixed flex w-full h-full bg-black justify-center items-center z-50 " >
+             <div id="preloader" class="loader" ></div>
+         </div>
+        <!-- Main page -->
+        <main id="main-content" class="flex justify-center items-center bg-[url('../asset/image/bg-ipad.png')] bg-cover">
+            <section
+                class="flex justify-center relative 2xl:scale-[1.4] xl:scale-[1] md:w-full px-[10px]"
+            >
                 <div
-                    class="w-[997px] h-[517px] bg-[#010409] rounded-[10px] shadow-[6px_9px_37px_6px_rgba(110,110,110,1)] flex flex-col overflow-hidden  "
+                    class="w-[997px] h-[517px] bg-[#010409] rounded-[10px]  flex flex-col overflow-hidden"
                 >
                     <div
                         class="w-full h-[20px] bg-[#0B1117] border-[#2D3139] border-[1px] flex flex-row items-center"
                     >
                         <div class="flex flex-row gap-2 mt-[4px] mb-[5px] ml-4">
                             <span
-                                class="w-[11px] h-[11px] bg-[#EF534A] rounded-[55px] md:w-[10px] md:h-[10px] md:rounded-[50%] "
+                                class="w-[11px] h-[11px] bg-[#EF534A] rounded-[55px] md:w-[10px] md:h-[10px] md:rounded-[50%]"
                             ></span>
                             <span
                                 class="w-[11px] h-[11px] bg-[#FEBC2E] rounded-[55px] md:w-[10px] md:h-[10px] md:rounded-[50%]"
@@ -38,102 +41,713 @@
                         </div>
                     </div>
                     <!-- Section Content -->
-                    <div class=" h-full flex flex-row justify-between items-center">
-                        <!-- Side bar -->
                     <div
-                        class="sidebar w-[67px] h-full bg-[#0B1117] flex flex-col justify-between md:w-[56px]"
+                        class="h-full flex flex-row justify-between items-center"
                     >
+                        <!-- Side bar -->
                         <div
-                            class="top-part-sidebar flex flex-col gap-[30px] items-center px-[20px] pt-[27px]"
+                            class="sidebar w-[67px] h-full bg-[#0B1117] flex flex-col justify-between md:w-[56px]"
                         >
-                        <i class="fa-regular fa-file item-sidebar "></i>
-                        <i class="fa-solid fa-code-branch item-sidebar"></i>
-                        <i class="fa-regular fa-folder-open item-sidebar"></i>
-                        <i class="fa-solid fa-cloud-arrow-down item-sidebar"></i>
-                        </div>
-                        <div
-                            class="low-part-sidebar flex flex-col items-center"
-                        >
-                        <i class="fa-regular fa-circle-user h-[51px] flex items-center item-sidebar"></i>
+                            <div
+                                class="top-part-sidebar flex flex-col gap-[30px] items-center px-[20px] pt-[27px]"
+                            >
+                                <i class="fa-regular fa-file item-sidebar"></i>
+                                <i
+                                    class="fa-solid fa-code-branch item-sidebar"
+                                ></i>
+                                <i
+                                    class="fa-regular fa-folder-open item-sidebar"
+                                ></i>
+                                <a href="../asset/file/Punnawat.pdf" download="Punnawat_M_resume">
+                                    <i
+                                    class="fa-solid fa-cloud-arrow-down item-sidebar"
+                                    ></i>
+                                </a>
+                            </div>
+                            <div
+                                class="low-part-sidebar flex flex-col items-center"
+                            >
+                                <i
+                                    class="fa-regular fa-circle-user h-[51px] flex items-center item-sidebar"
+                                ></i>
 
-                            <div class="w-full h-[18px] bg-[#028BE4]"></div>
-                            
-                        </div>
-                    </div>
-                    <!-- Content -->
-                       <div class="content-show  h-full flex flex-col">
-                        <div class=" w-full h-10  ">
-                            <div class=" title w-[30%] h-full bor">
-                               <i class="fa-brands fa-html5 text-[11px] mr-[6px] text-[#ff5733]"></i> Profile.html
+                                <div class="w-full h-[18px] bg-[#028BE4]"></div>
                             </div>
                         </div>
-                        <div class="article">
+                        <!-- Content -->
+                        <div class="content-show h-full flex flex-col">
+                            <div class="w-full h-10">
+                                <div class="title w-[30%] h-full bor">
+                                    <i
+                                        class="fa-brands fa-html5 text-[11px] mr-[6px] text-[#ff5733]"
+                                    ></i>
+                                    Profile.html
+                                </div>
+                            </div>
+                            <!-- Article in Profile -->
+                            <div
+                                class="article page-profile flex flex-col items-center gap-6"
+                            >
+                                <div class="w-[250px] h-[250px]">
+                                    <img
+                                        src="../asset/image/Pun.jpg"
+                                        alt="Pun-profile"
+                                        class="image-pofile w-[250px] h-[250px] object-cover rounded-[200px]"
+                                    />
+                                </div>
+                                <h2
+                                    class="font-jersey text-[#ffffff] text-[30px] text-center"
+                                >
+                                    Punnawat Mungkalarungsi
+                                </h2>
+                                <!-- About me -->
+                                <div
+                                    class="text-[#ffffff] profile-content text-[14px] indent-5"
+                                >
+                                    I'm a Computer Engineering student eager to
+                                    learn and grow through the experience. I
+                                    want to work on exciting projects that help
+                                    me improve my skills in computer
+                                    programming. I'm excited to learn from
+                                    experienced professionals and become a
+                                    better programmer.
+                                </div>
 
-                        </div>
-                        
-                        
-                       </div>
-                    <!-- Content 2 -->
-                       <div class="content-show  h-full flex flex-col ">
-                        <div class=" w-full h-10  ">
-                            <div class=" title">
-                                <i class="fa-brands fa-css3 mr-[6px] text-[#3399ff]"></i>
-                                Experience.css
+                                <div
+                                    class="hidden contact w-full max-w-[300px] h-[60px] bottom-4 justify-between items-center bg-[#13181d] rounded-lg p-6 bg-opacity-50 hover:bg-opacity-60 hover:scale-105 transition-all duration-300 ease-in-out md:flex"
+                                >
+                                    <a
+                                        href="https://www.instagram.com/pun_o_o/"
+                                        target="_blank"
+                                    >
+                                        <i
+                                            class="fa-brands fa-square-instagram contact-item"
+                                        ></i>
+                                    </a>
+                                    <a
+                                        href="https://web.facebook.com/profile.php?id=100014665182422"
+                                        target="_blank"
+                                    >
+                                        <i
+                                            class="fa-brands fa-facebook contact-item"
+                                        ></i>
+                                    </a>
+                                    <a
+                                        href="https://github.com/PunMung-66"
+                                        target="_blank"
+                                    >
+                                        <i
+                                            class="fa-brands fa-github-alt contact-item"
+                                        ></i>
+                                    </a>
+                                    <a
+                                        href="https://line.me/ti/p/rHCy5B_e4t"
+                                        target="_blank"
+                                    >
+                                        <i
+                                            class="fa-brands fa-line contact-item"
+                                        ></i>
+                                    </a>
+                                </div>
+                                <!-- Skill -->
+                                <h3
+                                    class="font-jersey text-[#ffffff] text-[30px] mt-[40px] flex text-line-r text-line-l w-full"
+                                >
+                                    My Skills
+                                    <i
+                                        class="fa-solid fa-lightbulb self-center mx-2"
+                                    ></i>
+                                </h3>
+                                <div
+                                    class="skill-list w-full grid grid-cols-3 gap-5 mb-[40px] p-10 bg-[#8B949E] bg-opacity-15 rounded-[10px]"
+                                >
+                                    <img
+                                        src="../asset/image/C.png"
+                                        alt="C-logo"
+                                        class="pro-lang-image"
+                                    />
+                                    <img
+                                        src="../asset/image/python.png"
+                                        alt="python-logo"
+                                        class="pro-lang-image"
+                                    />
+                                    <img
+                                        src="../asset/image/lua.png"
+                                        alt="lua-logo"
+                                        class="pro-lang-image"
+                                    />
+                                    <img
+                                        src="../asset/image/html.png"
+                                        alt="html-logo"
+                                        class="pro-lang-image"
+                                    />
+                                    <img
+                                        src="../asset/image/css.png"
+                                        alt="css-logo"
+                                        class="pro-lang-image"
+                                    />
+                                    <img
+                                        src="../asset/image/js.png"
+                                        alt="js-logo"
+                                        class="pro-lang-image"
+                                    />
+                                    <img
+                                        src="../asset/image/mongo.png"
+                                        alt="mongo-logo"
+                                        class="pro-lang-image"
+                                    />
+                                    <img
+                                        src="../asset/image/react.png"
+                                        alt="react-logo"
+                                        class="pro-lang-image"
+                                    />
+                                    <img
+                                        src="../asset/image/arduino.png"
+                                        alt="arduino-logo"
+                                        class="pro-lang-image"
+                                    />
+                                </div>
+                                <!-- School -->
+                                <h3
+                                    class="font-jersey text-[#ffffff] text-[30px] text-center flex text-line-r text-line-l w-full"
+                                >
+                                    Education Background
+                                    <i
+                                        class="fa-solid fa-graduation-cap mx-2 self-center"
+                                    ></i>
+                                </h3>
+                                <div
+                                    class="profile-content w-full grid text-[14px] grid-cols-3 mb-20 gap-5"
+                                >
+                                    <img
+                                        src="../asset/image/kmutt.png"
+                                        alt="KU-logo"
+                                        class="school-image"
+                                    />
+                                    <p class="col-span-2 text-[#ffffff]">
+                                        I'm currently studying at King Mongkut's
+                                        University of Technology Thonburi
+                                        (KMUTT) in Computer Engineering.
+                                    </p>
+                                    <img
+                                        src="../asset/image/sarasas.jpg"
+                                        alt="Sarasas-logo"
+                                        class="school-image"
+                                    />
+                                    <p class="col-span-2 text-[#ffffff]">
+                                        I graduated from Sarasas Witaed Saimai
+                                        School in Science-Mathematics program.
+                                    </p>
+                                    <img
+                                        src="../asset/image/thammasat.jpg"
+                                        alt="Kmutt-logo"
+                                        class="school-image"
+                                    />
+                                    <p class="col-span-2 text-[#ffffff]">
+                                        I graduated from Thammasat Secondary
+                                        School.
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                        <div class="article ">
+                        <!-- Content 2 -->
+                        <div class="content-show h-full flex flex-col">
+                            <div class="w-full h-10">
+                                <div class="title">
+                                    <i
+                                        class="fa-brands fa-css3 mr-[6px] text-[#3399ff]"
+                                    ></i>
+                                    Experience.css
+                                </div>
+                            </div>
+                            <div class="article page-experience flex flex-col">
+                                <h2
+                                    class="font-jersey text-[#ffffff] text-[40px] text-left my-7 flex text-line-r"
+                                >
+                                    My work
+                                    <i
+                                        class="fa-solid fa-briefcase text-[30px] mx-4 self-center"
+                                    ></i>
+                                </h2>
+                                <div
+                                    class="w-full grid grid-cols-2 s:grid-cols-1 gap-8 mb-10"
+                                >
+                                    <div
+                                        class="exp-card col-span-2 s:col-span-1 overflow-hidden relative"
+                                    >
+                                        <div class="title-exp">
+                                            <p class="title-text">
+                                                Skooldio Web devlopment #2 2024
+                                            </p>
+                                        </div>
+                                        <img
+                                            src="../asset/image/Project/skooldio/133521.jpg"
+                                            alt="Skooldio-web"
+                                            class="w-full h-full object-cover rounded-[10px]"
+                                        />
+                                    </div>
 
-                        </div>
-                        
-                        
-                       </div>
-                    <!-- Content3 -->
-                       <div class="content-show  h-full flex flex-col">
-                        <div class=" w-full h-10  ">
-                            <div class=" title ">
-                                <i class="fa-brands fa-js text-[11px] mr-[6px] text-[#F0DB4F]"></i>
-                                Project.js
+                                    <div
+                                        class="exp-card col-span-1 overflow-hidden relative"
+                                    >
+                                        <div class="title-exp">
+                                            <p class="title-text">
+                                                Code Combat 2022
+                                            </p>
+                                        </div>
+                                        <img
+                                            src="../asset/image/Project/codecombat/codecombat1.jpg"
+                                            alt="Codecombat"
+                                            class="w-full h-full object-cover rounded-[10px]"
+                                        />
+                                    </div>
+
+                                    <div
+                                        class="exp-card col-span-1 overflow-hidden relative"
+                                    >
+                                        <div class="title-exp">
+                                            <p class="title-text">
+                                                Metaverse KMUTT 2022
+                                            </p>
+                                        </div>
+                                        <img
+                                            src="../asset/image/Project/metaverse/FB_IMG_1663507399096.jpg"
+                                            alt="Metaverse"
+                                            class="w-full h-full object-cover rounded-[10px]"
+                                        />
+                                    </div>
+
+                                    <div
+                                        class="exp-card col-span-1 overflow-hidden relative"
+                                    >
+                                        <div class="title-exp">
+                                            <p class="title-text">
+                                                Comcamp 35 2023
+                                            </p>
+                                        </div>
+                                        <img
+                                            src="../asset/image/Project/comcamp/comcamp1.jpg"
+                                            alt="Comcamp35"
+                                            class="w-full h-full object-cover rounded-[10px]"
+                                        />
+                                    </div>
+
+                                    <div
+                                        class="exp-card col-span-1 overflow-hidden relative"
+                                    >
+                                        <div class="title-exp">
+                                            <p class="title-text">
+                                                Internship at "Proconsult+" 2021
+                                            </p>
+                                        </div>
+                                        <img
+                                            src="../asset/image/Project/Proconsult/IMG_7951.JPG"
+                                            alt="Proconsult"
+                                            class="w-full h-full object-cover rounded-[10px]"
+                                        />
+                                    </div>
+
+                                    <div
+                                        class="exp-card col-span-2 s:col-span-1 overflow-hidden relative"
+                                    >
+                                        <div class="title-exp">
+                                            <p class="title-text">
+                                                42 Bangkok KMITL batch June 2023
+                                            </p>
+                                        </div>
+                                        <img
+                                            src="../asset/image/Project/42Bangkok/133612.jpg"
+                                            alt="42-bangkok"
+                                            class="w-full h-full object-cover rounded-[10px]"
+                                        />
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="article ">
+                        <!-- Content3 -->
+                        <div class="content-show h-full flex flex-col">
+                            <div class="w-full h-10">
+                                <div class="title">
+                                    <i
+                                        class="fa-brands fa-js text-[11px] mr-[6px] text-[#F0DB4F]"
+                                    ></i>
+                                    Contact.js
+                                </div>
+                            </div>
+                            <div class="article page-project flex flex-col">
+                                <h2
+                                    class="font-jersey text-[#ffffff] text-[40px] text-left my-7 flex text-line-r"
+                                >
+                                    Contact Me
+                                    <i
+                                        class="fa-solid fa-address-card self-center text-[30px] mx-4 s:mx-1"
+                                    ></i>
+                                </h2>
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3877.1070402519913!2d100.49386787508838!3d13.651252186730192!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e2a251bb6b0cf1%3A0xf656e94ff13324ad!2z4Lih4Lir4Liy4Lin4Li04LiX4Lii4Liy4Lil4Lix4Lii4LmA4LiX4LiE4LmC4LiZ4LmC4Lil4Lii4Li14Lie4Lij4Liw4LiI4Lit4Lih4LmA4LiB4Lil4LmJ4Liy4LiY4LiZ4Lia4Li44Lij4Li1!5e0!3m2!1sth!2sth!4v1726820768034!5m2!1sth!2sth"
+                                    width="100%"
+                                    height="50%"
+                                    style="border: 0"
+                                    allowfullscreen=""
+                                    loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade"
+                                    class="rounded-lg s:w-[90%]"
+                                ></iframe>
+                                <form
+                                    class="w-full h-full flex flex-col items-center gap-6 my-10 pl-[20px] border-l-2 border-white"
+                                    action="mailto:punnawat.mungkalarungsi@gmail.com"
+                                    method="post"
+                                    enctype="text/plain"
+                                >
+                                    <p
+                                        class="w-[80%] text-[#ffffff] self-start"
+                                    >
+                                        "If you’re looking for a skilled,
+                                        creative, and approachable front-end
+                                        developer, [Name] can bring your website
+                                        to life with stunning design and
+                                        functionality. Please fill out the form
+                                        below, and they’ll get in touch with you
+                                        promptly."
+                                    </p>
+                                    <input
+                                        type="text"
+                                        placeholder="Your Name"
+                                        class="input-contact w-[80%] p-4 self-start rounded-lg s:w-[90%]"
+                                    />
+                                    <input
+                                        type="email"
+                                        placeholder="Your Email"
+                                        class="input-contact w-[80%] p-4 self-start rounded-lg s:w-[90%]"
+                                    />
+                                    <textarea
+                                        name="message"
+                                        id="message"
+                                        cols="30"
+                                        rows="10"
+                                        placeholder="Your Message"
+                                        class="input-contact self-start w-[90%] p-4 rounded-lg"
+                                    ></textarea>
 
+                                    <button
+                                        type="submit"
+                                        class="w-[200px] p-4 bg-[#28a745] text-white rounded-lg s:w-[90%] self-start"
+                                    >
+                                        Send Message
+                                    </button>
+                                </form>
+                            </div>
                         </div>
-                        
-                        
-                       </div>
                     </div>
                 </div>
+                <!-- Font content -->
+                <!-- bg-[url('../asset/image/Pun3.jpg')] bg-cover bg-center -->
                 <div
-                    class="w-[414px] h-[565px] bg-[#0B1117] rounded-[10px] absolute top-[-25px] left-[83px] md:hidden"
-                ></div>
+                    class="font-content w-[414px] h-[565px] bg-[#0B1117] overflow-hidden rounded-[10px] absolute top-[-25px] left-[83px] md:hidden flex flex-col items-center hover:-translate-y-3 transition-all duration-300 ease-in-out"
+                >
+                    <!-- Three d model -->
+                    <div id="container3D" class="w-full h-full"></div>
+                    <div
+                        class="contact w-[60%] h-[60px] absolute bottom-4 flex justify-between items-center bg-[#0B1117] rounded-lg p-6 bg-opacity-50 hover:bg-opacity-60 hover:scale-105 transition-all duration-300 ease-in-out"
+                    >
+                        <a
+                            href="https://www.instagram.com/pun_o_o/"
+                            target="_blank"
+                        >
+                            <i
+                                class="fa-brands fa-square-instagram contact-item"
+                            ></i>
+                        </a>
+                        <a
+                            href="https://web.facebook.com/profile.php?id=100014665182422"
+                            target="_blank"
+                        >
+                            <i class="fa-brands fa-facebook contact-item"></i>
+                        </a>
+                        <a href="https://github.com/PunMung-66" target="_blank">
+                            <i class="fa-brands fa-github-alt contact-item"></i>
+                        </a>
+                        <a
+                            href="https://line.me/ti/p/rHCy5B_e4t"
+                            target="_blank"
+                        >
+                            <i class="fa-brands fa-line contact-item"></i>
+                        </a>
+                    </div>
+                </div>
             </section>
+            <!-- The Modal Skooldio-->
+            <div id="modal-canvas" class="modal-canvas">
+                <!-- The Close Button -->
+
+                <!-- Modal Content -->
+
+                <div id="modal-content" class="modal-content">
+                    <div class="modal-detail">
+                        <i class="fa-solid fa-xmark x-in-modal"></i>
+                        <div class="w-full h-full flex justify-between gap-3">
+                            <img
+                                src="../asset/image/Project/skooldio/133521.jpg"
+                                alt="skooldio-1"
+                                class="w-[55%] h-full object-cover rounded-[10px]"
+                            />
+                            <img
+                                src="../asset/image/Project/skooldio/133520.jpg"
+                                alt="skooldio-2"
+                                class="w-[40%] h-full object-cover rounded-[10px]"
+                            />
+                        </div>
+                        <h2
+                            class="font-jersey text-white p-3 rounded-md text-[30px] text-center"
+                        >
+                            <i
+                                class="fa-regular fa-bookmark text-[20px] m-2"
+                            ></i>
+                            Skooldio Web devlopment #2 2024
+                        </h2>
+                        <p class="text-white indent-3">
+                            "I participated in a Web Development Bootcamp at
+                            Skooldio, where I gained hands-on experience with
+                            fundamental website components. The bootcamp covered
+                            topics ranging from basic HTML, CSS, and JavaScript
+                            to more advanced concepts, including the use of the
+                            React framework for building interactive user
+                            interfaces. Additionally, I learned about version
+                            control systems, such as Git, and explored modern
+                            styling frameworks like Tailwind CSS and Bootstrap.
+                            The program included practical projects and
+                            real-world scenarios, enhancing my skills in both
+                            front-end development and modern web technologies."
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- The Modal 2 Codecombat -->
+            <div id="modal-canvas" class="modal-canvas">
+                <!-- The Close Button -->
+
+                <!-- Modal Content -->
+
+                <div id="modal-content" class="modal-content">
+                    <div class="modal-detail">
+                        <i class="fa-solid fa-xmark x-in-modal"></i>
+                        <div class="w-full h-full flex justify-between gap-3">
+                            <img
+                                src="../asset/image/Project/codecombat/codecombat2.jpg"
+                                alt="codecombat-1"
+                                class="w-[55%] h-full object-cover rounded-[10px]"
+                            />
+                            <img
+                                src="../asset/image/Project/codecombat/codecombat1.jpg"
+                                alt="codecombat-2"
+                                class="w-[40%] h-full object-cover rounded-[10px]"
+                            />
+                        </div>
+                        <h2
+                            class="font-jersey text-white p-3 rounded-md text-[30px] text-center"
+                        >
+                            <i
+                                class="fa-regular fa-bookmark text-[20px] m-2"
+                            ></i>
+                            CodeCombat Arena 2023
+                        </h2>
+                        <p class="text-white indent-3">
+                            "I was the first runner-up in a code combat
+                            competition in 2023, earning a prize of 3,000 baht.
+                            In this competition, participants were tasked with
+                            developing algorithms to defeat opponents in a
+                            series of programming challenges. Using Python or
+                            JavaScript, I designed and implemented strategies to
+                            outsmart competitors, showcasing my skills in
+                            problem-solving, algorithm design, and coding
+                            efficiency. The competition provided a platform to
+                            test my abilities in real-time scenarios and further
+                            hone my programming skills."
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- The Modal 3 Metaverse -->
+            <div id="modal-canvas" class="modal-canvas">
+                <!-- The Close Button -->
+
+                <!-- Modal Content -->
+
+                <div id="modal-content" class="modal-content">
+                    <div class="modal-detail">
+                        <i class="fa-solid fa-xmark x-in-modal"></i>
+                        <div class="w-full h-full flex justify-between gap-3">
+                            <img
+                                src="../asset/image/Project/metaverse/IMG_8265.jpg"
+                                alt="metaverse-1"
+                                class="w-[55%] h-full object-cover rounded-[10px]"
+                            />
+                            <img
+                                src="../asset/image/Project/metaverse/IMG_8270.jpg"
+                                alt="metaverse-2"
+                                class="w-[40%] h-full object-cover rounded-[10px]"
+                            />
+                        </div>
+                        <h2
+                            class="font-jersey text-white p-3 rounded-md text-[30px] text-center"
+                        >
+                            <i
+                                class="fa-regular fa-bookmark text-[20px] m-2"
+                            ></i
+                            >Metaverse for smart Factory contest 2022
+                        </h2>
+                        <p class="text-white indent-3">
+                            (Consolation prize worth 5,000 baht) "I simulated a
+                            factory environment designed to operate
+                            autonomously, without human intervention, to address
+                            the challenges posed by the COVID-19 pandemic. This
+                            simulation involved developing and implementing
+                            automated systems for production, quality control,
+                            and logistics. The goal was to ensure continuous
+                            operation and efficiency while minimizing the risk
+                            of virus transmission among human workers. The
+                            project required integrating advanced technologies
+                            such as robotics, IoT sensors, and remote monitoring
+                            tools to create a fully functional, self-sustaining
+                            factory model."
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- The Modal 4 Comcamp35-->
+            <div id="modal-canvas" class="modal-canvas">
+                <!-- The Close Button -->
+
+                <!-- Modal Content -->
+
+                <div id="modal-content" class="modal-content">
+                    <div class="modal-detail">
+                        <i class="fa-solid fa-xmark x-in-modal"></i>
+                        <div class="w-full h-full flex justify-between gap-3">
+                            <img
+                                src="../asset/image/Project/comcamp/comcamp3.png"
+                                alt="comcamp-1"
+                                class="w-[55%] h-full object-cover rounded-[10px]"
+                            />
+                            <img
+                                src="../asset/image/Project/comcamp/comcamp2.jpg"
+                                alt="comcamp-2"
+                                class="w-[40%] h-full object-cover rounded-[10px]"
+                            />
+                        </div>
+                        <h2
+                            class="font-jersey text-white p-3 rounded-md text-[30px] text-center"
+                        >
+                            <i
+                                class="fa-regular fa-bookmark text-[20px] m-2"
+                            ></i>
+                            Comcamp 35 @KMUTT CPE 2023
+                        </h2>
+                        <p class="text-white indent-3">
+                            In 2023, I participated in the KMUTT Computer
+                            Engineering field’s academic camp,
+                            <a
+                                href="https://comcamp.io"
+                                target="_blank"
+                                class="text-black hover:text-blue-600 bg-white rounded-sm p-[1px]"
+                                >"Comcamp 35"</a
+                            >
+                            ,where I served as a technician and front-end
+                            developer. My role involved developing the camp’s
+                            web page using React. Additionally, I had the
+                            opportunity to teach an academic session, where I
+                            instructed participants in the basics of HTML, CSS,
+                            and JavaScript. This experience allowed me to
+                            contribute to both the technical and educational
+                            aspects of the camp.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- The Modal 5 Proconsult+ -->
+            <div id="modal-canvas" class="modal-canvas">
+                <!-- The Close Button -->
+
+                <!-- Modal Content -->
+
+                <div id="modal-content" class="modal-content">
+                    <div class="modal-detail">
+                        <i class="fa-solid fa-xmark x-in-modal"></i>
+                        <div class="w-full h-full flex justify-between gap-3">
+                            <img
+                                src="../asset/image/Project/Proconsult/IMG_7949.JPG"
+                                alt="Proconsult-1"
+                                class="w-[55%] h-full object-cover rounded-[10px]"
+                            />
+                            <img
+                                src="../asset/image/Project/Proconsult/IMG_7951.JPG"
+                                alt="Proconsult-2"
+                                class="w-[40%] h-full object-cover rounded-[10px]"
+                            />
+                        </div>
+                        <h2
+                            class="font-jersey text-white p-3 rounded-md text-[30px] text-center"
+                        >
+                            <i
+                                class="fa-regular fa-bookmark text-[20px] m-2"
+                            ></i>
+                            Procounsult + Internship 2021
+                        </h2>
+                        <p class="text-white indent-3">
+                            I interned at Pro Consult Plus as a junior backend
+                            developer, where I worked on a mini project
+                            involving PostgreSQL. During the internship, I
+                            gained hands-on experience with database design,
+                            management, and querying, contributing to the
+                            development of efficient backend solutions.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- The Modal 6 42 Bangkok -->
+            <div id="modal-canvas" class="modal-canvas">
+                <!-- The Close Button -->
+
+                <!-- Modal Content -->
+
+                <div id="modal-content" class="modal-content">
+                    <div class="modal-detail">
+                        <i class="fa-solid fa-xmark x-in-modal"></i>
+                        <div class="w-full h-full flex justify-between">
+                            <img
+                                src="../asset/image/Project/42Bangkok/email.png"
+                                alt="metaverse-1"
+                                class="w-[50%] h-full object-cover rounded-[10px]"
+                            />
+                            <img
+                                src="../asset/image/Project/42Bangkok/133612.jpg"
+                                alt="metaverse-2"
+                                class="w-[45%] h-full object-cover rounded-[10px]"
+                            />
+                        </div>
+                        <h2
+                            class="font-jersey text-white p-3 rounded-md text-[30px] text-center"
+                        >
+                            <i
+                                class="fa-regular fa-bookmark text-[20px] m-2"
+                            ></i>
+                            42 Bangkok batch June 2023
+                        </h2>
+                        <p class="text-white indent-3">
+                            I joined 42 Bangkok, the coding school at KMITL,
+                            where I focused on learning algorithms and data
+                            structures in C language . I successfully completed
+                            9 out of 13 levels, gaining a solid foundation in
+                            algorithmic problem-solving and advanced data
+                            management techniques.
+                        </p>
+                    </div>
+                </div>
+            </div>
         </main>
-        <script>
-            let content_list = document.querySelectorAll('.content-show')
-            let select_list = document.querySelectorAll('.item-sidebar')
-
-            let update = async (index) =>{
-                try{
-                    for(let i = 0; i < content_list.length; i++){
-                        
-                        if (i === index){
-                            content_list[i].classList.remove('content-hide')
-                        }else{
-                            content_list[i].classList.add('content-hide')
-                        }
-                    }
-                }
-                catch(e){
-                    console.log(e)
-                }
-            }
-            update(0);
-
-            for(let i = 0; i < select_list.length - 2; i++ ){
-                select_list[i].addEventListener('click', () => {
-                    update(i);
-                })
-            }
-        </script>
     </body>
+    <script src="../scripts/script.js"></script>
+    <script type="module" src="../scripts/3d.js"></script>
 </html>

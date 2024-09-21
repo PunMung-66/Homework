@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preloader with Delay</title>
+    <style>
+        /* Preloader Styles */
+        #preloader {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Optional: Animation of a loader (can customize as per your need) */
+        .loader {
+            border: 16px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 16px solid #3498db;
+            width: 120px;
+            height: 120px;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Page Content -->
+    <div id="content" style="display: none;">
+        <h1>Welcome to the Website</h1>
+        <p>This is the main content of the page.</p>
+    </div>
+
+    <script>
+        // Wait for the complete page to load (including images, if any)
+        window.addEventListener('load', function() {
+            // Add a delay of 1 second before hiding the preloader
+            setTimeout(function() {
+                var preloader = document.getElementById('preloader');
+                preloader.style.display = 'none';
+
+                // Show page content
+                var content = document.getElementById('content');
+                content.style.display = 'block';
+            }, 3000); // 1000 milliseconds = 1 second
+        });
+    </script>
+</body>
+</html>
