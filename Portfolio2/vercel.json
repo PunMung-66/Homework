@@ -3,6 +3,26 @@
         {
             "src": "public/index.html",
             "use": "@vercel/static"
+        },
+        {
+            "src": "src/input.css",
+            "use": "@vercel/static"
+        },
+        {
+            "src": "scripts/*.js",
+            "use": "@vercel/static"
+        },
+        {
+            "src": "asset/file/*",
+            "use": "@vercel/static"
+        },
+        {
+            "src": "asset/image/*",
+            "use": "@vercel/static"
+        },
+        {
+            "src": "asset/model/*",
+            "use": "@vercel/static"
         }
     ],
     "routes": [
