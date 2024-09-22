@@ -30,7 +30,7 @@ scene.add(directionalLight)
 
 // Load the file
 loader.load(
-    `../asset/model/computer_v3/scene.gltf`,
+    `./asset/model/computer_v3/scene.gltf`,
     function (gltf) {
         object = gltf.scene
         object.position.set(0, -10, 0) // Set the object position
