@@ -1,19 +1,19 @@
 {
     "builds": [
         {
-            "src": "/public/index.html",
+            "src": "public/index.html",
             "use": "@vercel/static"
         },
         {
-            "src": "/public/src/*.css",
+            "src": "public/src/**/*",
             "use": "@vercel/static"
         },
         {
-            "src": "/public/scripts/*.js",
+            "src": "public/scripts/**/*",
             "use": "@vercel/static"
         },
         {
-            "src": "/public/asset/*",
+            "src": "public/asset/**/*",
             "use": "@vercel/static"
         }
     ],
@@ -22,6 +22,5 @@
             "src": "/(.*)",
             "dest": "/public/index.html"
         }
-    ],
-    "outputDirectory": "public"
+    ]
 }
