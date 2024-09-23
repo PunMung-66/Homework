@@ -6,10 +6,10 @@ window.addEventListener('load', function () {
     var preloader = document.querySelector('.preloader-canvas')
     setTimeout(function () {
         preloader.classList.add('animate-close')
-    }, 5000)
+    }, 4000)
     setTimeout(function () {
         preloader.classList.add('hidden')
-    }, 6000)
+    }, 5000)
 
     
 })
