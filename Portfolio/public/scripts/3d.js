@@ -5,19 +5,23 @@ import { GLTFLoader } from 'https://cdn.skypack.dev/three@0.129.0/examples/jsm/l
 import { DRACOLoader } from 'https://cdn.skypack.dev/three@0.129.0/examples/jsm/loaders/DRACOLoader.js'
 import Stats from 'https://cdn.skypack.dev/stats.js'
 
+// WebGL compatibility check (important for mobile)
+if (!THREE.WEBGL.isWebGLAvailable()) {
+    alert('Your browser does not support WebGL')
+    throw new Error('WebGL not supported')
+}
+
 function shouldRender() {
     return window.innerWidth >= 1000
 }
 
 if (shouldRender()) {
-    // Fix: shouldRender is a function and should be called
-
     // Create a Three.JS Scene
     const scene = new THREE.Scene()
 
     const mycanvas = document.getElementById('container3D')
 
-    // Create a new camera with a more typical FOV for better performance
+    // Create a camera with a more typical FOV for better performance
     const camera = new THREE.PerspectiveCamera(
         10, // Adjusted FOV for performance
         mycanvas.clientWidth / mycanvas.clientHeight,
@@ -60,17 +64,21 @@ if (shouldRender()) {
     )
 
     // Instantiate a new renderer and set its size with optimized pixel ratio
-    const renderer = new THREE.WebGLRenderer({ alpha: true })
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: false }) // Disable antialias for mobile performance
     renderer.setPixelRatio(
-        window.devicePixelRatio < 2 ? window.devicePixelRatio : 2
-    ) // Optimized for high-DPI screens
+        Math.min(window.devicePixelRatio, 2) // Ensure max pixel ratio of 2 for mobile
+    )
     renderer.setSize(mycanvas.clientWidth, mycanvas.clientHeight) // Use mycanvas size
     mycanvas.appendChild(renderer.domElement) // Append renderer to mycanvas
 
-    // OrbitControls to allow the camera to move around the scene
+    // OrbitControls to allow the camera to move around the scene (supports touch for mobile)
     const controls = new OrbitControls(camera, renderer.domElement)
+    controls.enableDamping = true // Enable damping for smoother control on mobile
+    controls.dampingFactor = 0.05
+    controls.enableZoom = true // Allow zoom
+    controls.enablePan = true // Allow panning
 
-    // Add Stats.js for performance monitoring
+    // Add Stats.js for performance monitoring (optional for mobile)
     const stats = new Stats()
     // document.body.appendChild(stats.dom);
 
@@ -98,6 +106,7 @@ if (shouldRender()) {
             }
         }
 
+        controls.update() // Required for damping and smooth controls
         renderer.render(scene, camera)
 
         stats.end()
