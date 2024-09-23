@@ -1,29 +1,39 @@
-// Import the THREE.js library
 import * as THREE from 'https://cdn.skypack.dev/three@0.129.0/build/three.module.js'
 import { OrbitControls } from 'https://cdn.skypack.dev/three@0.129.0/examples/jsm/controls/OrbitControls.js'
 import { GLTFLoader } from 'https://cdn.skypack.dev/three@0.129.0/examples/jsm/loaders/GLTFLoader.js'
 import { DRACOLoader } from 'https://cdn.skypack.dev/three@0.129.0/examples/jsm/loaders/DRACOLoader.js'
-import Stats from 'https://cdn.skypack.dev/stats.js'
 
-function shouldRender() {
-    return window.innerWidth >= 1000
+function isMobile() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+    )
 }
 
-if (shouldRender()) {
-    // Create a Three.JS Scene
+function isWebGLAvailable() {
+    try {
+        const canvas = document.createElement('canvas')
+        return !!(
+            window.WebGLRenderingContext &&
+            (canvas.getContext('webgl') ||
+                canvas.getContext('experimental-webgl'))
+        )
+    } catch (e) {
+        return false
+    }
+}
+
+if (isWebGLAvailable()) {
     const scene = new THREE.Scene()
     const mycanvas = document.getElementById('container3D')
 
-    // Create a new camera
     const camera = new THREE.PerspectiveCamera(
-        10,
+        isMobile() ? 20 : 10, // Wider FOV for mobile
         mycanvas.clientWidth / mycanvas.clientHeight,
         0.1,
         1000
     )
     camera.position.set(59, 32, 55)
 
-    // Instantiate loaders
     const loader = new GLTFLoader()
     const dracoLoader = new DRACOLoader()
     dracoLoader.setDecoderPath(
@@ -33,76 +43,83 @@ if (shouldRender()) {
 
     let object
 
-    // Optimize lighting
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 1) // Reduced intensity
+    const directionalLight = new THREE.DirectionalLight(
+        0xffffff,
+        isMobile() ? 2 : 4
+    )
     directionalLight.position.set(500, 500, 500)
     scene.add(directionalLight)
 
-    const ambientLight = new THREE.AmbientLight(0x333333, 1) // Reduced intensity
+    const ambientLight = new THREE.AmbientLight(0x333333, isMobile() ? 2 : 4)
     scene.add(ambientLight)
 
-    // Load the model
     loader.load(
         './asset/model/computer_v3/scene.gltf',
         function (gltf) {
             object = gltf.scene
             object.position.set(0, -10, 0)
             scene.add(object)
-
-            // Use a simple material for performance
-            object.traverse((child) => {
-                if (child.isMesh) {
-                    child.material = new THREE.MeshBasicMaterial({
-                        color: 0xffffff,
-                        wireframe: false,
-                    })
-                }
-            })
         },
         undefined,
         function (error) {
-            console.error(error)
+            console.error('An error occurred while loading the model:', error)
         }
     )
 
-    const renderer = new THREE.WebGLRenderer({ alpha: true })
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: false })
     renderer.setPixelRatio(
-        window.devicePixelRatio < 2 ? window.devicePixelRatio : 2
+        isMobile()
+            ? 1
+            : window.devicePixelRatio < 2
+            ? window.devicePixelRatio
+            : 2
     )
     renderer.setSize(mycanvas.clientWidth, mycanvas.clientHeight)
     mycanvas.appendChild(renderer.domElement)
 
     const controls = new OrbitControls(camera, renderer.domElement)
-    const stats = new Stats()
-    // document.body.appendChild(stats.dom);
+    controls.enableDamping = true
+    controls.dampingFactor = 0.05
 
-    const rotationSpeed = 0.0003
+    const rotationSpeed = isMobile() ? 0.0002 : 0.0003
     let direction = 1
     const range = 0.3
 
     function animate() {
-        stats.begin()
+        requestAnimationFrame(animate)
 
-        // Rotate the object only if it's loaded
         if (object) {
-            object.rotation.y += direction * rotationSpeed
-            if (object.rotation.y > range + 0.5 || object.rotation.y < -range) {
-                direction *= -1
+            if (direction === 1) {
+                object.rotation.y += rotationSpeed
+                if (object.rotation.y > range + 0.5) {
+                    direction = -1
+                }
+            } else {
+                object.rotation.y -= rotationSpeed
+                if (object.rotation.y < -range) {
+                    direction = 1
+                }
             }
         }
 
+        controls.update()
         renderer.render(scene, camera)
-        stats.end()
-        requestAnimationFrame(animate)
     }
 
-    // Resize listener
-    window.addEventListener('resize', function () {
+    function handleResize() {
         camera.aspect = mycanvas.clientWidth / mycanvas.clientHeight
         camera.updateProjectionMatrix()
         renderer.setSize(mycanvas.clientWidth, mycanvas.clientHeight)
-    })
+    }
 
-    // Start rendering
+    window.addEventListener('resize', handleResize)
+
     animate()
+} else {
+    console.error('WebGL is not supported in this browser')
+    // Display an error message to the user
+    const errorMessage = document.createElement('div')
+    errorMessage.textContent =
+        'Your browser does not support WebGL, which is required to view this 3D model.'
+    document.body.appendChild(errorMessage)
 }
