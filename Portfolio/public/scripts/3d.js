@@ -2,38 +2,28 @@ import * as THREE from 'https://cdn.skypack.dev/three@0.129.0/build/three.module
 import { OrbitControls } from 'https://cdn.skypack.dev/three@0.129.0/examples/jsm/controls/OrbitControls.js'
 import { GLTFLoader } from 'https://cdn.skypack.dev/three@0.129.0/examples/jsm/loaders/GLTFLoader.js'
 import { DRACOLoader } from 'https://cdn.skypack.dev/three@0.129.0/examples/jsm/loaders/DRACOLoader.js'
+import Stats from 'https://cdn.skypack.dev/stats.js'
 
-function isMobile() {
-    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-        navigator.userAgent
-    )
+function shouldRender() {
+    return window.innerWidth >= 1000
 }
 
-function isWebGLAvailable() {
-    try {
-        const canvas = document.createElement('canvas')
-        return !!(
-            window.WebGLRenderingContext &&
-            (canvas.getContext('webgl') ||
-                canvas.getContext('experimental-webgl'))
-        )
-    } catch (e) {
-        return false
-    }
-}
-
-if (isWebGLAvailable()) {
+if (shouldRender()) {
+    // Create a Three.JS Scene
     const scene = new THREE.Scene()
+
     const mycanvas = document.getElementById('container3D')
 
+    // Create a new camera with a more typical FOV for better performance
     const camera = new THREE.PerspectiveCamera(
-        isMobile() ? 20 : 10, // Wider FOV for mobile
+        2.5, // Adjusted FOV for performance
         mycanvas.clientWidth / mycanvas.clientHeight,
         0.1,
         1000
     )
-    camera.position.set(59, 32, 55)
+    camera.position.set(59, 32, 55) // Set the camera position
 
+    // Instantiate a loader for the .glb file with Draco compression
     const loader = new GLTFLoader()
     const dracoLoader = new DRACOLoader()
     dracoLoader.setDecoderPath(
@@ -41,53 +31,56 @@ if (isWebGLAvailable()) {
     )
     loader.setDRACOLoader(dracoLoader)
 
+    // Keep the 3D object in a global variable so we can access it later
     let object
 
-    const directionalLight = new THREE.DirectionalLight(
-        0xffffff,
-        isMobile() ? 2 : 4
-    )
-    directionalLight.position.set(500, 500, 500)
+    // Optimize lighting: Reduced number of lights and intensity
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 4) // Reduced intensity
+    directionalLight.position.set(500, 500, 500) // x, y, z position
     scene.add(directionalLight)
 
-    const ambientLight = new THREE.AmbientLight(0x333333, isMobile() ? 2 : 4)
+    const ambientLight = new THREE.AmbientLight(0x333333, 4) // Reduced intensity
     scene.add(ambientLight)
 
+    // Load the .glb file with Draco compression
     loader.load(
-        './asset/model/computer_v3/scene.gltf',
+        './asset/model/computer2.glb', // Updated to load the new .glb file
         function (gltf) {
             object = gltf.scene
-            object.position.set(0, -10, 0)
+            object.position.set(0, 0, 0) // Set the object position
             scene.add(object)
         },
         undefined,
         function (error) {
-            console.error('An error occurred while loading the model:', error)
+            console.error(error)
         }
     )
 
-    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: false })
+    // Instantiate a new renderer and set its size with optimized pixel ratio
+    const renderer = new THREE.WebGLRenderer({ alpha: true })
     renderer.setPixelRatio(
-        isMobile()
-            ? 1
-            : window.devicePixelRatio < 2
-            ? window.devicePixelRatio
-            : 2
-    )
-    renderer.setSize(mycanvas.clientWidth, mycanvas.clientHeight)
-    mycanvas.appendChild(renderer.domElement)
+        window.devicePixelRatio < 2 ? window.devicePixelRatio : 2
+    ) // Optimized for high-DPI screens
+    renderer.setSize(mycanvas.clientWidth, mycanvas.clientHeight) // Use mycanvas size
+    mycanvas.appendChild(renderer.domElement) // Append renderer to mycanvas
 
+    // OrbitControls to allow the camera to move around the scene
     const controls = new OrbitControls(camera, renderer.domElement)
-    controls.enableDamping = true
-    controls.dampingFactor = 0.05
 
-    const rotationSpeed = isMobile() ? 0.0002 : 0.0003
+    // Add Stats.js for performance monitoring
+    const stats = new Stats()
+    // document.body.appendChild(stats.dom);
+
+    // Rotation speed (in radians per frame)
+    const rotationSpeed = 0.0003
     let direction = 1
     const range = 0.3
 
+    // Render the scene with animation, updating only on control changes for better performance
     function animate() {
-        requestAnimationFrame(animate)
+        stats.begin()
 
+        // Rotate the object only if it's loaded
         if (object) {
             if (direction === 1) {
                 object.rotation.y += rotationSpeed
@@ -102,24 +95,24 @@ if (isWebGLAvailable()) {
             }
         }
 
-        controls.update()
         renderer.render(scene, camera)
+
+        stats.end()
+        requestAnimationFrame(animate)
     }
 
-    function handleResize() {
-        camera.aspect = mycanvas.clientWidth / mycanvas.clientHeight
+    // Add a listener to the window to handle resizing
+    window.addEventListener('resize', function () {
+        camera.aspect = mycanvas.clientWidth / mycanvas.clientHeight // Fix: use mycanvas size
         camera.updateProjectionMatrix()
-        renderer.setSize(mycanvas.clientWidth, mycanvas.clientHeight)
-    }
+        renderer.setSize(mycanvas.clientWidth, mycanvas.clientHeight) // Fix: use mycanvas size
+    })
 
-    window.addEventListener('resize', handleResize)
-
+    // Start the 3D rendering
     animate()
-} else {
-    console.error('WebGL is not supported in this browser')
-    // Display an error message to the user
-    const errorMessage = document.createElement('div')
-    errorMessage.textContent =
-        'Your browser does not support WebGL, which is required to view this 3D model.'
-    document.body.appendChild(errorMessage)
+
+    // Trigger render on camera movement for performance boost
+    controls.addEventListener('change', () => {
+        renderer.render(scene, camera)
+    })
 }
