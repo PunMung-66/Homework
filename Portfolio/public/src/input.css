@@ -9,7 +9,7 @@
     }
 
     .title {
-        @apply w-[30%] h-full border-[#2D3139] border-t-[#028BE4] border-b-0 border-r-0 border-[1px] text-[9px] text-[#ffffff] bg-[#0B1117]  flex items-center justify-center;
+        @apply w-[30%] h-full border-[#2D3139] border-t-[#028BE4] border-b-0 border-r-0 border-[1px] text-[9px] text-[#ffffff] bg-[#0B1117]  flex items-center justify-center s:w-[150px];
     }
 
     .article {

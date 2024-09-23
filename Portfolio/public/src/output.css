@@ -976,6 +976,10 @@ video {
   max-height: 550px;
 }
 
+.min-h-10{
+  min-height: 2.5rem;
+}
+
 .w-0{
   width: 0px;
 }
@@ -1082,6 +1086,14 @@ video {
 
 .max-w-full{
   max-width: 100%;
+}
+
+.flex-shrink{
+  flex-shrink: 1;
+}
+
+.flex-shrink-0{
+  flex-shrink: 0;
 }
 
 .flex-grow{
@@ -1503,10 +1515,6 @@ video {
   --tw-bg-opacity: 0.9;
 }
 
-.bg-\[url\(\'\.\.\/asset\/image\/Pun3\.jpg\'\)\]{
-  background-image: url('../asset/image/Pun3.jpg');
-}
-
 .bg-\[url\(\'\.\.\/asset\/image\/bg-ipad\.png\'\)\]{
   background-image: url('../asset/image/bg-ipad.png');
 }
@@ -1522,6 +1530,10 @@ video {
 .object-cover{
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.p-0{
+  padding: 0px;
 }
 
 .p-1{
@@ -1898,6 +1910,12 @@ video {
   font-size: 9px;
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+@media (max-width: 700px){
+  .title{
+    width: 150px;
+  }
 }
 
 .article{
@@ -2389,8 +2407,16 @@ main {
     height: 50px;
   }
 
+  .s\:h-\[80px\]{
+    height: 80px;
+  }
+
   .s\:w-2\/3{
     width: 66.666667%;
+  }
+
+  .s\:w-\[150px\]{
+    width: 150px;
   }
 
   .s\:w-\[50px\]{
