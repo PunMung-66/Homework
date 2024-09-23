@@ -10,21 +10,20 @@ function shouldRender() {
 }
 
 if (shouldRender()) {
-    // Create a Three.js Scene
+    // Create a Three.JS Scene
     const scene = new THREE.Scene()
-
     const mycanvas = document.getElementById('container3D')
 
-    // Create a new camera with optimized FOV and clipping planes
+    // Create a new camera
     const camera = new THREE.PerspectiveCamera(
-        50, // FOV adjusted for performance
+        10,
         mycanvas.clientWidth / mycanvas.clientHeight,
-        0.1, // Near clipping plane, closer for performance
-        1000 // Far clipping plane limited for performance
+        0.1,
+        1000
     )
-    camera.position.set(59, 32, 55) // Set the camera position
+    camera.position.set(59, 32, 55)
 
-    // Instantiate a loader for the .gltf file with Draco compression
+    // Instantiate loaders
     const loader = new GLTFLoader()
     const dracoLoader = new DRACOLoader()
     dracoLoader.setDecoderPath(
@@ -32,24 +31,33 @@ if (shouldRender()) {
     )
     loader.setDRACOLoader(dracoLoader)
 
-    // Keep the 3D object in a global variable so we can access it later
     let object
 
-    // Optimize lighting: Use minimal lights and reduce intensity
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 1.5) // Reduced intensity
-    directionalLight.position.set(500, 500, 500) // x, y, z position
+    // Optimize lighting
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 1) // Reduced intensity
+    directionalLight.position.set(500, 500, 500)
     scene.add(directionalLight)
 
-    const ambientLight = new THREE.AmbientLight(0x333333, 1) // Reduced ambient intensity
+    const ambientLight = new THREE.AmbientLight(0x333333, 1) // Reduced intensity
     scene.add(ambientLight)
 
-    // Load the model file with Draco compression
+    // Load the model
     loader.load(
         './asset/model/computer_v3/scene.gltf',
         function (gltf) {
             object = gltf.scene
-            object.position.set(0, -10, 0) // Set the object position
+            object.position.set(0, -10, 0)
             scene.add(object)
+
+            // Use a simple material for performance
+            object.traverse((child) => {
+                if (child.isMesh) {
+                    child.material = new THREE.MeshBasicMaterial({
+                        color: 0xffffff,
+                        wireframe: false,
+                    })
+                }
+            })
         },
         undefined,
         function (error) {
@@ -57,45 +65,38 @@ if (shouldRender()) {
         }
     )
 
-    // Create renderer with optimized pixel ratio and set its size
-    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: false }) // Disabled antialiasing for performance
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)) // Cap pixel ratio for high-DPI devices
+    const renderer = new THREE.WebGLRenderer({ alpha: true })
+    renderer.setPixelRatio(
+        window.devicePixelRatio < 2 ? window.devicePixelRatio : 2
+    )
     renderer.setSize(mycanvas.clientWidth, mycanvas.clientHeight)
     mycanvas.appendChild(renderer.domElement)
 
-    // OrbitControls to allow the camera to move around the scene
     const controls = new OrbitControls(camera, renderer.domElement)
-
-    // Use Stats.js for performance monitoring
     const stats = new Stats()
+    // document.body.appendChild(stats.dom);
 
-    // Rotation speed for the object (in radians per frame)
-    const rotationSpeed = 0.001
+    const rotationSpeed = 0.0003
     let direction = 1
     const range = 0.3
 
-    // Render the scene with animation, applying optimizations
     function animate() {
         stats.begin()
 
         // Rotate the object only if it's loaded
         if (object) {
-            if (direction === 1) {
-                object.rotation.y += rotationSpeed
-                if (object.rotation.y > range + 0.5) direction = -1
-            } else {
-                object.rotation.y -= rotationSpeed
-                if (object.rotation.y < -range) direction = 1
+            object.rotation.y += direction * rotationSpeed
+            if (object.rotation.y > range + 0.5 || object.rotation.y < -range) {
+                direction *= -1
             }
         }
 
         renderer.render(scene, camera)
         stats.end()
-
         requestAnimationFrame(animate)
     }
 
-    // Optimize resizing by adjusting the camera aspect ratio and renderer size
+    // Resize listener
     window.addEventListener('resize', function () {
         camera.aspect = mycanvas.clientWidth / mycanvas.clientHeight
         camera.updateProjectionMatrix()
@@ -104,13 +105,4 @@ if (shouldRender()) {
 
     // Start rendering
     animate()
-
-    // Render only when OrbitControls are changed
-    controls.addEventListener('change', () => {
-        renderer.render(scene, camera)
-    })
-
-    // Performance optimizations
-    controls.enableDamping = true // Enable damping (inertia) for smoother movement
-    controls.dampingFactor = 0.05 // Damping speed
 }
